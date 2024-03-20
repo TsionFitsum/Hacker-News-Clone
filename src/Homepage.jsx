@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import { formatDistanceToNow } from 'date-fns';
-import Nav from './nav';
-import New from './New';
 
 
 function App() {
@@ -64,62 +62,37 @@ function App() {
 
   return (
     <Router>
-    <div className="bg-orange-100 min-h-screen" > 
-      <Nav />
-    <>
-        
+      <>
+        <h1 className="text-3xl font-bold pb-3">Hacker News</h1>
         <Navigation />
         <Routes>
-          <Route  index
+          <Route
             path="/"
-            element={<HomePage stories={stories} handleShowComments={handleShowComments} 
-            showCommentsForStory={showCommentsForStory} />}
+            element={<HomePage stories={stories} handleShowComments={handleShowComments} showCommentsForStory={showCommentsForStory} />}
           />
-          <Route path="/comment/:storyId" element={<CommentsPage stories={stories} 
-          showCommentsForStory={showCommentsForStory} />} />
-
-         <Route path="/new" element={<New />}  />
-
+          <Route path="/comment/:storyId" element={<CommentsPage stories={stories} showCommentsForStory={showCommentsForStory} />} />
         </Routes>
       </>
-      
-       </div>
-  
-      
     </Router>
   );
 }
 
 function HomePage({ stories, handleShowComments, showCommentsForStory }) {
   return (
-    <div className='grid gap-2 grid-cols-2 grid-rows-2 text-sm bg-orange-100 mt-10 ml-40 mr-40 mb-4   '> 
+    <div className='grid gap-2 grid-cols-4 grid-rows-4 text-sm'>
       {stories && stories.map((story) => (
-        <article key={story.id} className='flex flex-col justify-between bg-stone-50 rounded-md pt-2 border border-gray-200 '>
+        <article key={story.id} className='flex items-start gap-1 bg-orange-400 rounded-md pt-2'>
           <div>
-            <a href={story.url} target="_blank" rel="noreferrer" className='font-bold'>
+            <a href={story.url} target="_blank" rel="noreferrer" className='underline font-bold'>
               {story.title}
             </a>{" "}
             <div className='text-xs mt-0'>by {story.by} </div>
-            <div className="flex items-center mr-4 mt-3 gap-4 "> {/* This is the parent container */}
-  {/* Code for displaying the score */}
-  <div className="flex items-center"> {/* Removed any margin */}
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         fill="none" viewBox="0 0 24 24" 
-         strokeWidth={1.5} stroke="currentColor" 
-         className="ml-1 mt-1 mb-2 w-4 h-4">
-      <path strokeLinecap="round" 
-            strokeLinejoin="round" 
-            d="M11.48 3.499a.562.562 0 0 1 1.04 
-            0l2.125 5.111a.563.563 0 0 0 
-            .475.345l5.518.442c.499.04.701.663.321.988l-4.204 
-            3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 
-            0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 
-            20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 
-            0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 
-            0 0 0 .475-.345L11.48 3.5Z" />
-    </svg>
-    <div>{story.score}</div> {/* Removed margin-right */}
-  </div>
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="ml-1 mt-1 mb-2 w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+              </svg>
+              <div className='text-left'>{story.score}</div>
+            </div>
             {showCommentsForStory === story.id && story.comments && (
               <div>
                 <ul>
@@ -137,7 +110,7 @@ function HomePage({ stories, handleShowComments, showCommentsForStory }) {
                                 <span className="comment-by ml-5">by: {subComment.by}</span>
                               </div>
                               <div className="comment-text" dangerouslySetInnerHTML={{ __html: subComment.text }} />
-                            </li> 
+                            </li>
                           ))}
                         </ul>
                       )}
@@ -146,32 +119,15 @@ function HomePage({ stories, handleShowComments, showCommentsForStory }) {
                 </ul>
               </div>
             )}
-           <div className="flex items-center"> {/* Removed any margin */}
-    <Link to={`/comment/${story.id}`} className="flex items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-           fill="none" viewBox="0 0 24 24" 
-           strokeWidth="1.5" 
-           stroke="currentColor" 
-           className="w-4 h-4 mr-1">
-        <path strokeLinecap="round" 
-              strokeLinejoin="round" 
-              d="M2.25 12.76c0 1.6 1.123 2.994 
-                2.707 3.227 1.068.157 2.148.279 
-                3.238.364.466.037.893.281 1.153.671L12 
-                21l2.652-3.978c.26-.39.687-.634 1.153-.67 
-                1.09-.086 2.17-.208 3.238-.365 1.584-.233 
-                2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 
-                48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
-      </svg>
-      <span>Comments</span> {/* Removed class for text alignment */}
-    </Link>
-  </div>
-</div>
+            <div>
+              <Link to={`/comment/${story.id}`}>
+                Show Comments
+              </Link>
+            </div>
           </div>
         </article>
       ))}
     </div>
-
   );
 }
 
@@ -195,7 +151,7 @@ function CommentsPage({ stories }) {
           <ul className="comments-list">
             {story.comments.map((comment) => (
               <li key={comment.id} className="comment-item mb-7">
-                <div className='flex items-center'> 
+                <div className='flex items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                      fill="none" viewBox="0 0 24 24" 
                      stroke-width="1.5" 
@@ -287,8 +243,8 @@ function CommentsPage({ stories }) {
 const Navigation = () => (
   <nav>
     <ul>
-      {/* <li><Link to="/">Home</Link></li>
-      <li><Link to="/about">About</Link></li> */}
+      <li><Link to="/">Home</Link></li>
+      <li><Link to="/about">About</Link></li>
     </ul>
   </nav>
 );
