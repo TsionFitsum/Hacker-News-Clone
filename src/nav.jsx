@@ -8,8 +8,8 @@ import New from './New';
 const navigation = [
   { name: 'Top', href: '/', current: true },
   { name: 'New', href: '/new', current: false },
-  { name: 'Best', href: '#', current: false },
-  { name: 'Ask', href: '#', current: false },
+  { name: 'Best', href: '/best', current: false },
+  { name: 'Ask', href: '/ask', current: false },
   { name: 'Show', href: '#', current: false },
   { name: 'Jobs', href: '#', current: false },
 

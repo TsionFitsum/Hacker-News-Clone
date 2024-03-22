@@ -4,6 +4,8 @@ import './App.css';
 import { formatDistanceToNow } from 'date-fns';
 import Nav from './nav';
 import New from './New';
+import Best from './Best';
+import Ask from './Ask';
 
 
 function App() {
@@ -64,7 +66,7 @@ function App() {
 
   return (
     <Router>
-    <div className="bg-orange-100 min-h-screen" > 
+    <div className="bg-orange-100 min-h-screen mb-10" > 
       <Nav />
     <>
         
@@ -79,6 +81,9 @@ function App() {
           showCommentsForStory={showCommentsForStory} />} />
 
          <Route path="/new" element={<New />}  />
+         <Route path='/best' element={<Best />}/>
+         <Route path='/ask' element={<Ask />}/>
+
 
         </Routes>
       </>
@@ -92,9 +97,9 @@ function App() {
 
 function HomePage({ stories, handleShowComments, showCommentsForStory }) {
   return (
-    <div className='grid gap-2 grid-cols-2 grid-rows-2 text-sm bg-orange-100 mt-10 ml-40 mr-40 mb-4   '> 
-      {stories && stories.map((story) => (
-        <article key={story.id} className='flex flex-col justify-between bg-stone-50 rounded-md pt-2 border border-gray-200 '>
+    <div className='grid gap-2 grid-cols-2 grid-rows-2 text-sm bg-orange-100 mt-10 ml-40 mr-40 mb-10   '> 
+      {stories && stories.map((story) => ( 
+        <article key={story.id} className='flex flex-col justify-between bg-stone-50 rounded-md pt-2 border border-gray-200  '>
           <div>
             <a href={story.url} target="_blank" rel="noreferrer" className='font-bold'>
               {story.title}
@@ -163,7 +168,7 @@ function HomePage({ stories, handleShowComments, showCommentsForStory }) {
                 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 
                 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
       </svg>
-      <span>Comments</span> {/* Removed class for text alignment */}
+      <span>comment</span> {/* Removed class for text alignment */}
     </Link>
   </div>
 </div>
