@@ -10,8 +10,8 @@ const navigation = [
   { name: 'New', href: '/new', current: false },
   { name: 'Best', href: '/best', current: false },
   { name: 'Ask', href: '/ask', current: false },
-  { name: 'Show', href: '#', current: false },
-  { name: 'Jobs', href: '#', current: false },
+  { name: 'Show', href: '/show', current: false },
+  { name: 'Jobs', href: '/jobs', current: false },
 
 
 ]

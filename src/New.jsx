@@ -51,10 +51,10 @@ function New() {
         {newStories && newStories.map(newStory => (
           <article className='flex flex-col justify-between bg-stone-50 rounded-md pt-2 border border-gray-200' key={newStory.id}>
             <a href={newStory.url} target="_blank" rel="noreferrer" className='font-bold'>{newStory.title}</a>{" "}
-            <div className='text-xs mt-0'>by {newStory.by} </div>   
+            <div className='text-xs mt-0 text-gray-500'>by {newStory.by} </div>   
  
             <div className="flex items-center mr-4 mt-3 gap-4">
-            <div className="flex items-center">
+            <div className="flex items-center text-gray-500">
 
             <svg xmlns="http://www.w3.org/2000/svg" 
          fill="none" viewBox="0 0 24 24" 
@@ -74,11 +74,11 @@ function New() {
     <div>{newStory.score}</div>
               </div>
 
-              <div className='flex items-center'>
+              <div className='flex items-center text-gray-500'>
                           <svg xmlns="http://www.w3.org/2000/svg" 
                                 fill="none" 
                                 viewBox="0 0 24 24" 
-                                stroke-width="1" 
+                                stroke-width="1.5" 
                                 stroke="currentColor" 
                                 class="w-4 h-4">
                                   
