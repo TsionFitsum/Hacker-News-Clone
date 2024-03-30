@@ -68,7 +68,7 @@ function App() {
 
   return (
     <Router>
-    <div className="bg-orange-100 min-h-screen mb-10" > 
+    <div className="bg-orange-100 min-h-screen " > 
       <Nav />
     <>
         
@@ -87,10 +87,6 @@ function App() {
          <Route path='/ask' element={<Ask />}/>
          <Route path='/show' element={<Show />}/>
          <Route path='/jobs' element={<Jobs />}/>
-
-
-
-
         </Routes>
       </>
       
@@ -101,9 +97,9 @@ function App() {
   );
 }
 
-function HomePage({ stories, handleShowComments, showCommentsForStory }) {
+function HomePage({ stories, handleShowComments, showCommentsForStory }) { 
   return (
-    <div className='grid gap-2 grid-cols-2 grid-rows-2 text-sm bg-orange-100 mt-10 ml-40 mr-40 mb-10'> 
+    <div className='grid gap-2 grid-cols-2 grid-rows-2 text-sm bg-orange-100 mt-10 ml-40 mr-40 mb-40'> 
       {stories && stories.map((story) => ( 
         <article key={story.id} className='flex flex-col justify-between bg-stone-50 rounded-md pt-2 border border-gray-200  '>
           <div>
@@ -290,9 +286,9 @@ function CommentsPage({ stories }) {
                 {comment.comments && comment.comments.length > 0 && (
                   <ul className='sub-comments-list'>
                     {comment.comments.map((subComment) => (
-                      <li key={subComment.id} className="comment-item mb-7 ml-10 mr-10 p-4 bg-white rounded-md">
+                      <li key={subComment.id} className="comment-item ml-10 mr-10 p-4 bg-white rounded-md">
                         <div className='flex items-center ml-3 text-gray-500'>
-                <svg xmlns="http://www.w3.org/2000/svg" 
+                  <svg xmlns="http://www.w3.org/2000/svg" 
                      fill="none" viewBox="0 0 24 24" 
                      stroke-width="1.5" 
                      stroke="currentColor" 

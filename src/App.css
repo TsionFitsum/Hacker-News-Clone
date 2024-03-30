@@ -1,6 +1,6 @@
 #root {
-  min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
-  /* background: orange ; */
+  height: 100vh; /* Ensure the container takes at least the full height of the viewport */
+  background: orange ;
   margin: 0;
   padding: 0;
   text-align: center; 

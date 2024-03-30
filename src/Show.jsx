@@ -14,7 +14,7 @@ useEffect(() => {
         }
         const showStoryId = await response.json();
 
-        const storiesPromises = showStoryId.slice(0,10).map(async (storyId) => {
+        const storiesPromises = showStoryId.slice(0,20).map(async (storyId) => {
             const storyResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${storyId}.json`);
             if(!storyResponse.ok) {
                 throw new Error('Failed to fetch story details')
@@ -33,7 +33,7 @@ useEffect(() => {
 },[]);
 
 if(!showStory && showStory.length === 0){
-    return <div>Loading</div>
+    return <div>Loading...</div>
 }
 
 const formatTime = (timestamp) => {
@@ -47,10 +47,10 @@ const formatTime = (timestamp) => {
         {showStory && showStory.map(showStoryy => (
             <article key={showStoryy.id} className='flex flex-col justify-between bg-stone-50 rounded-md pt-2 border border-gray-200'>
           <a href={showStoryy.url} target="_blank" rel="noreferrer" className='font-bold'>{showStoryy.title}</a>
-          <div className='text-xs mt-0'>by {showStoryy.by} </div>
+          <div className='text-xs mt-0 text-gray-500'>by {showStoryy.by} </div>
 
-          <div className="flex items-center mr-4 mt-3 gap-4">
-            <div className="flex items-center">
+          <div className="flex items-center mr-4 mt-3 gap-4 text-gray-500">
+            <div className="flex items-center ">
 
             <svg xmlns="http://www.w3.org/2000/svg" 
          fill="none" viewBox="0 0 24 24" 

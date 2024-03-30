@@ -6,15 +6,15 @@ import New from './New';
 
 
 const navigation = [
-  { name: 'Top', href: '/', current: true },
+  { name: 'Top', href: '/', current: false },
   { name: 'New', href: '/new', current: false },
   { name: 'Best', href: '/best', current: false },
   { name: 'Ask', href: '/ask', current: false },
   { name: 'Show', href: '/show', current: false },
   { name: 'Jobs', href: '/jobs', current: false },
+]    
 
 
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
