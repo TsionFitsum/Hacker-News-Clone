@@ -19,7 +19,7 @@ function App() {
       try {
         const getTopStories = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
         const topStoryData = await getTopStories.json();
-        const topTwentyStories = topStoryData.slice(0, 20);
+        const topTwentyStories = topStoryData.slice(0, 10);
 
         const storiesWithData = await Promise.all(
           topTwentyStories.map(async (storyId) => {
@@ -67,7 +67,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router basename=''>
     <div className="bg-orange-100 min-h-screen " > 
       <Nav />
     <>
@@ -82,11 +82,11 @@ function App() {
           <Route path="/comment/:storyId" element={<CommentsPage stories={stories} 
           showCommentsForStory={showCommentsForStory} />} />
 
-         <Route path="/new" element={<New />}  />
-         <Route path='/best' element={<Best />}/>
-         <Route path='/ask' element={<Ask />}/>
-         <Route path='/show' element={<Show />}/>
-         <Route path='/jobs' element={<Jobs />}/>
+         <Route path="/New" element={<New />}  />
+         <Route path='/Best' element={<Best />}/>
+         <Route path='/Ask' element={<Ask />}/>
+         <Route path='/Show' element={<Show />}/>
+         <Route path='/Jobs' element={<Jobs />}/>
         </Routes>
       </>
       
